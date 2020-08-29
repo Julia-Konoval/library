@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="logo.png" alt="book" />
+      <h1>Library</h1>
+      <button id="addBookBtn" onclick="addBook()">+Add book</button>
+      <button id="removeBookBtn">Remove book</button>
+    </header>
+
+    <form id="form">
+      <h1>Fill in the following:</h1>
+      <label for="name">Name of the book</label><br />
+      <input type="text" id="name" name="name" /><br />
+
+      <label for="author">Author</label><br />
+      <input type="text" id="author" name="author" /><br />
+
+      <label for="year">Published in...(year)</label><br />
+      <input type="number" id="year" name="year" /><br />
+
+      <label for="pages">Amount of pages</label><br />
+      <input type="number" id="pages" name="pages" /><br />
+
+      <div id="readCheck">
+        <input type="radio" id="read" name="read" value="read" />
+        <label for="read">Read</label><br />
+
+        <input type="radio" id="read" name="read" value="read" />
+        <label for="read">Not read</label><br />
+      </div>
+      <button type="submit" id="submitBtn">Save</button>
+    </form>
+
+    <div class="shelf">
+      <div id="books">
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <!-- <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span>
+        <span>
+          <div class="book"><div class="white-part"></div></div>
+        </span> -->
+      </div>
+      <img src="shelf.png" alt="shelf" />
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

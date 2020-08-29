@@ -1,0 +1,102 @@
+.shelf {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: row;
+  height: 100vh;
+  position: inherit;
+  margin-left: auto;
+  margin-right: auto;
+}
+.shelf img {
+  width: 100vh;
+  height: 90vh;
+}
+body {
+  display: flex;
+  height: 100vh;
+  font-family: "Oswald", sans-serif;
+}
+.book {
+  background-color: rgb(124, 111, 81);
+  border: 2px solid rgb(87, 81, 52);
+  padding: 4vh;
+  height: 14vh;
+  width: 2%;
+  border-radius: 0px 0px 10px 5px;
+  -webkit-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
+  -moz-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
+  box-shadow: 5px -41px 37px -6px rgba(158, 157, 156, 0.993);
+}
+.white-part {
+  background-color: rgb(216, 216, 203);
+  border-top: 0px;
+  border-right: 2px solid rgb(87, 81, 52);
+  border-left: 2px solid rgb(87, 81, 52);
+  border-bottom: 2px solid rgb(87, 81, 52);
+  border-radius: 0px 0px 45px 45px;
+  height: 10%;
+  width: 8.4vh;
+  position: absolute;
+  margin-top: -4.4vh;
+  margin-left: -4.24vh;
+}
+#books {
+  display: flex;
+  position: absolute;
+  margin-top: 18vh;
+}
+header {
+  /* font-family: "Oswald", sans-serif; */
+  color: #edf0f1;
+  display: block;
+  float: left;
+  padding: 5px;
+  width: 10em;
+  /* margin-left: 20px; */
+  height: 100%;
+  background-color: grey;
+}
+header h1 {
+  margin-left: 20px;
+}
+
+header img {
+  width: 100px;
+  margin-left: 20px;
+}
+
+header button {
+  justify-content: space-around;
+  margin: 5px;
+  width: 8em;
+  padding: 20px 10px;
+}
+#form {
+  display: none;
+  background-color: rgb(183, 78, 27);
+  height: 70vh;
+  padding: 15vh;
+}
+
+input {
+  margin: 1vh;
+}
+#submitBtn {
+  width: 13vh;
+  margin: 2vh;
+  padding: 2vh;
+}
+.newBook {
+  background-color: rgb(124, 111, 81);
+  border: 2px solid rgb(87, 81, 52);
+  padding: 4vh;
+  height: 14vh;
+  width: 2%;
+  border-radius: 0px 0px 10px 5px;
+  -webkit-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
+  -moz-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
+  box-shadow: 5px -41px 37px -6px rgba(158, 157, 156, 0.993);
+}
+/* .newRowBook {
+} */
