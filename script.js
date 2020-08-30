@@ -15,6 +15,7 @@ const removeBookBtn = document.querySelector("#removeBookBtn");
 const form = document.querySelector("#form");
 const saveNewBook = document.querySelector("#submitBtn");
 const name = document.querySelector("#name");
+// const bookLocation = document.querySelector("#books");
 
 addBookBtn.addEventListener("click", () => {
   if (form.style.display === "none") {
@@ -23,13 +24,14 @@ addBookBtn.addEventListener("click", () => {
     form.style.display = "none";
   }
 });
-
-saveNewBook.addEventListener("click", () => {
-  if (book >= 2) {
-    var anotherBook = book.cloneNode(true);
-    anotherBook.classList.add("newBook");
-    book.after(anotherBook);
-  } else {
-    addBook();
-  }
-});
+function addBook() {
+  // saveNewBook.addEventListener("click", () => {
+  // if (book >= 2) {
+  var anotherBook = book.cloneNode(true);
+  anotherBook.classList.add("newBook");
+  document.querySelector("#books").appendChild(anotherBook);
+  anotherBook.book.after(anotherBook);
+  // } else {
+  //   addBook();
+  // }
+}
