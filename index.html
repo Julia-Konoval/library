@@ -18,7 +18,7 @@
     <header>
       <img class="logo" src="logo.png" alt="book" />
       <h1>Library</h1>
-      <button id="addBookBtn" onclick="addBook()">+Add book</button>
+      <button id="addBookBtn">+Add book</button>
       <button id="removeBookBtn">Remove book</button>
     </header>
 
@@ -40,8 +40,8 @@
         <input type="radio" id="read" name="read" value="read" />
         <label for="read">Read</label><br />
 
-        <input type="radio" id="read" name="read" value="read" />
-        <label for="read">Not read</label><br />
+        <input type="radio" id="unread" name="unread" value="unread" />
+        <label for="unread">Not read</label><br />
       </div>
       <button type="submit" id="submitBtn">Save</button>
     </form>
@@ -51,6 +51,19 @@
         <span>
           <div class="book"><div class="white-part"></div></div>
         </span>
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Modal Header</h2>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the Modal Body</p>
+            <p>Some other text...</p>
+          </div>
+          <div class="modal-footer">
+            <h3>Modal Footer</h3>
+          </div>
+        </div>
         <!-- <span>
           <div class="book"><div class="white-part"></div></div>
         </span>
