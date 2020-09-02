@@ -5,7 +5,7 @@ class theBook {
     this.name = name;
     this.author = author;
     this.pages = pages;
-    this.yaer = year;
+    this.year = year;
     this.read = read;
   }
 }
@@ -15,9 +15,10 @@ const addBookBtn = document.querySelector("#addBookBtn");
 const removeBookBtn = document.querySelector("#removeBookBtn");
 
 const form = document.querySelector("#form");
-const submitBtn = document.querySelector("#submitBtn");
 
-// const bookLocation = document.querySelector("#books");
+const modal = document.getElementById("myModal");
+const modalContent = document.querySelector(".modal-content");
+const close = document.querySelector(".close");
 
 addBookBtn.addEventListener("click", () => {
   if (form.style.display === "none") {
@@ -25,19 +26,15 @@ addBookBtn.addEventListener("click", () => {
   } else {
     form.style.display = "none";
   }
-  addBookToLibrary();
 });
-
-const read = document.querySelector("#read");
-const unread = document.querySelector("#unread");
-submitBtn.addEventListener("click", addBookToLibrary);
 
 function addBookToLibrary() {
   const name = document.querySelector("#name").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
   const year = document.querySelector("#year").value;
-
+  const read = document.querySelector("#read");
+  const unread = document.querySelector("#unread");
   //Determine status of radio buttons
   if (read.checked === true) {
     read.value = "read";
@@ -47,9 +44,8 @@ function addBookToLibrary() {
 
   let newBook = new theBook(name, author, pages, year, read.value);
 
-  console.log(newBook.year);
   myLibrary.push(newBook);
-  createCard(newBook);
+  displayBookData(newBook);
 
   //clear text fields
   name.value = "";
@@ -59,7 +55,9 @@ function addBookToLibrary() {
   read.checked = false;
   unread.checked = false;
 }
-function createCard(newBook) {}
+const submitBtn = document.querySelector("#submitBtn");
+submitBtn.addEventListener("click", addBookToLibrary());
+
 // function visualiseBook(newBook) {}
 //     function addBook() {
 //
@@ -69,23 +67,29 @@ function createCard(newBook) {}
 //   addBook();
 // }
 
-var modal = document.getElementById("myModal");
-
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+// var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+// var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function () {
-  modal.style.display = "block";
-};
+function displayBookData(newBook) {
+  modalContent.textContent = Object.keys(newBook);
+}
+book.addEventListener("click", () => {
+  if (modalContent.style.display === "none") {
+    modalContent.style.display = "block";
+  } else {
+    modalContent.style.display = "none";
+  }
+  console.log(newBook.value);
+  modalContent.textContent = newBook.value;
+});
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
+close.addEventListener("click", () => {
+  modalContent.style.display = "none";
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {

@@ -100,7 +100,7 @@ input {
 }
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: rgb(183, 78, 27);
   color: white;
 }
 
@@ -112,12 +112,13 @@ input {
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: rgb(183, 78, 27);
   color: white;
 }
 
 /* Modal Content */
 .modal-content {
+  display: none;
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -128,7 +129,9 @@ input {
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
-
+.close {
+  font-size: 60px;
+}
 /* Add Animation */
 @keyframes animatetop {
   from {
