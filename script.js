@@ -56,6 +56,11 @@ function addBookToLibrary() {
   console.log(myLibrary);
   displayBookData(newBook);
 
+  for (let i = 0; i <= myLibrary.length; i++) {
+    myLibrary[newBook].id = i;
+    console.log(myLibrary[newBook].id);
+  }
+
   // visualiseBook(newBook);
 
   //clear text fields
@@ -75,6 +80,8 @@ function visualiseBook() {
   const whitePart = document.createElement("div");
   whitePart.classList.add("white-part");
   bookDiv.appendChild(whitePart);
+
+  // let bookId = modalContent.length - 1;
 }
 
 const submitBtn = document.querySelector("#submitBtn");
@@ -88,7 +95,8 @@ submitBtn.addEventListener("click", (e) => {
 // When the user clicks on the button, open the modal
 function displayBookData() {
   modalContent.style.display = "block";
-  modalContent.textContent = Object.keys(myLibrary);
+  // modalContent.textContent = Object.keys(myLibrary);
+
   // for (let i = 0; i <= myLibrary.length; i++) {
   //   modalContent.textContent = Object.keys(myLibrary[i]);
   // }
