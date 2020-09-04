@@ -19,6 +19,7 @@ const form = document.querySelector("#form");
 const modal = document.getElementById("myModal");
 const modalContent = document.querySelector(".modal-content");
 const close = document.querySelector(".close");
+const books = document.querySelector("#books");
 
 addBookBtn.addEventListener("click", () => {
   if (form.style.display === "none") {
@@ -27,6 +28,12 @@ addBookBtn.addEventListener("click", () => {
     form.style.display = "none";
   }
 });
+//While clicking outside form, close it
+window.onclick = function (event) {
+  if (event.target == form) {
+    form.style.display = "none";
+  }
+};
 
 function addBookToLibrary() {
   const name = document.querySelector("#name").value;
@@ -35,6 +42,7 @@ function addBookToLibrary() {
   const year = document.querySelector("#year").value;
   const read = document.querySelector("#read");
   const unread = document.querySelector("#unread");
+
   //Determine status of radio buttons
   if (read.checked === true) {
     read.value = "read";
@@ -45,7 +53,10 @@ function addBookToLibrary() {
   let newBook = new theBook(name, author, pages, year, read.value);
 
   myLibrary.push(newBook);
+  console.log(myLibrary);
   displayBookData(newBook);
+
+  // visualiseBook(newBook);
 
   //clear text fields
   name.value = "";
@@ -55,36 +66,42 @@ function addBookToLibrary() {
   read.checked = false;
   unread.checked = false;
 }
+
+function visualiseBook() {
+  const bookDiv = document.createElement("div");
+  bookDiv.classList.add("book");
+  books.appendChild(bookDiv);
+
+  const whitePart = document.createElement("div");
+  whitePart.classList.add("white-part");
+  bookDiv.appendChild(whitePart);
+}
+
 const submitBtn = document.querySelector("#submitBtn");
-submitBtn.addEventListener("click", addBookToLibrary());
-
-// function visualiseBook(newBook) {}
-//     function addBook() {
-//
-//   document.querySelector("#books").appendChild(anotherBook);
-// anotherBook.book.after(anotherBook);
-// } else {
-//   addBook();
-// }
-
-// Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBookToLibrary();
+  visualiseBook();
+  form.style.display = "none";
+});
 
 // When the user clicks on the button, open the modal
-function displayBookData(newBook) {
-  modalContent.textContent = Object.keys(newBook);
+function displayBookData() {
+  modalContent.style.display = "block";
+  modalContent.textContent = Object.keys(myLibrary);
+  // for (let i = 0; i <= myLibrary.length; i++) {
+  //   modalContent.textContent = Object.keys(myLibrary[i]);
+  // }
+  // modalContent.textContent = addBookToLibrary();
 }
+
 book.addEventListener("click", () => {
   if (modalContent.style.display === "none") {
     modalContent.style.display = "block";
   } else {
     modalContent.style.display = "none";
   }
-  console.log(newBook.value);
-  modalContent.textContent = newBook.value;
+  displayBookData();
 });
 
 close.addEventListener("click", () => {
