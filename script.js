@@ -1,4 +1,5 @@
 let myLibrary = [];
+let currentElementId = 0;
 
 class theBook {
   constructor(name, author, pages, year, read) {
@@ -10,16 +11,23 @@ class theBook {
   }
 }
 
-const book = document.querySelector(".book");
 const addBookBtn = document.querySelector("#addBookBtn");
 const removeBookBtn = document.querySelector("#removeBookBtn");
-
+const deleteBtn = document.querySelector("#deleteBtn");
 const form = document.querySelector("#form");
 
 const modal = document.getElementById("myModal");
 const modalContent = document.querySelector(".modal-content");
-const close = document.querySelector(".close");
-const books = document.querySelector("#books");
+const close = document.querySelector("#close");
+const closeForm = document.querySelector("#close-form");
+const bookContainer = document.querySelector("#books");
+const header = document.querySelector("header");
+
+const title = document.querySelector("#title");
+const Author = document.querySelector("#modal-author");
+const Pages = document.querySelector("#modal-pages");
+const Year = document.querySelector("#modal-year");
+const modalRead = document.querySelector("#modal-read");
 
 addBookBtn.addEventListener("click", () => {
   if (form.style.display === "none") {
@@ -28,12 +36,14 @@ addBookBtn.addEventListener("click", () => {
     form.style.display = "none";
   }
 });
-//While clicking outside form, close it
-window.onclick = function (event) {
-  if (event.target == form) {
-    form.style.display = "none";
-  }
-};
+
+function assignID() {
+  const allBooks = document.querySelectorAll(".book");
+
+  allBooks.forEach((book, index) => {
+    book.setAttribute("id", index);
+  });
+}
 
 function addBookToLibrary() {
   const name = document.querySelector("#name").value;
@@ -54,34 +64,18 @@ function addBookToLibrary() {
 
   myLibrary.push(newBook);
   console.log(myLibrary);
-  displayBookData(newBook);
-
-  for (let i = 0; i <= myLibrary.length; i++) {
-    myLibrary[newBook].id = i;
-    console.log(myLibrary[newBook].id);
-  }
-
-  // visualiseBook(newBook);
-
-  //clear text fields
-  name.value = "";
-  author.value = "";
-  pages.value = "";
-  year.value = "";
-  read.checked = false;
-  unread.checked = false;
 }
 
 function visualiseBook() {
   const bookDiv = document.createElement("div");
   bookDiv.classList.add("book");
-  books.appendChild(bookDiv);
+  bookContainer.appendChild(bookDiv);
 
   const whitePart = document.createElement("div");
   whitePart.classList.add("white-part");
   bookDiv.appendChild(whitePart);
 
-  // let bookId = modalContent.length - 1;
+  assignID();
 }
 
 const submitBtn = document.querySelector("#submitBtn");
@@ -89,33 +83,58 @@ submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addBookToLibrary();
   visualiseBook();
+  form.reset();
   form.style.display = "none";
 });
 
 // When the user clicks on the button, open the modal
-function displayBookData() {
+function displayBookData(selectedBookID) {
   modalContent.style.display = "block";
-  // modalContent.textContent = Object.keys(myLibrary);
 
-  // for (let i = 0; i <= myLibrary.length; i++) {
-  //   modalContent.textContent = Object.keys(myLibrary[i]);
-  // }
-  // modalContent.textContent = addBookToLibrary();
+  // Assign the values from the array to the modal
+  title.textContent = myLibrary[selectedBookID].name;
+  Author.textContent = myLibrary[selectedBookID].author;
+  Pages.textContent = myLibrary[selectedBookID].pages;
+  Year.textContent = myLibrary[selectedBookID].year;
+  modalRead.textContent = myLibrary[selectedBookID].read;
 }
+function updateBookData() {
+  const bookDivs = document.querySelectorAll(".books");
+  for (let i = 0; i < myLibrary.length; i++) {
+    bookDivs[i].setAttribute("data-book", i);
+    console.log(bookDivs[i]);
+  }
+}
+deleteBtn.addEventListener("click", () => {
+  myLibrary.splice(bookNumber, 1);
+  const removedBook = document.querySelector(`[data-book="${bookNumber}"]`);
+  console.log(removedBook);
+  document.querySelector(".books").removeChild(removeBook);
+  modalContent.style.display = "none";
+});
 
-book.addEventListener("click", () => {
+bookContainer.addEventListener("click", (event) => {
+  console.log(event);
+  console.log(event.target);
+  bookNumber = event.target.attributes[1].value;
+
+  const selectedBookID = event.target.id;
   if (modalContent.style.display === "none") {
     modalContent.style.display = "block";
+    console.log(myLibrary[selectedBookID]);
+    displayBookData(selectedBookID);
   } else {
     modalContent.style.display = "none";
   }
-  displayBookData();
 });
 
 close.addEventListener("click", () => {
   modalContent.style.display = "none";
 });
 
+closeForm.addEventListener("click", () => {
+  form.style.display = "none";
+});
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {

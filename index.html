@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <header>
       <img class="logo" src="logo.png" alt="book" />
@@ -23,6 +24,7 @@
     </header>
 
     <form id="form">
+      <span id="close-form">&times;</span>
       <h1>Fill in the following:</h1>
       <label for="name">Name of the book</label><br />
       <input type="text" id="name" name="name" /><br />
@@ -37,10 +39,10 @@
       <input type="number" id="pages" name="pages" /><br />
 
       <div id="readCheck">
-        <input type="radio" id="read" name="read" value="read" />
+        <input type="radio" id="read" name="book-read" value="read" />
         <label for="read">Read</label><br />
 
-        <input type="radio" id="unread" name="unread" value="unread" />
+        <input type="radio" id="unread" name="book-read" value="unread" />
         <label for="unread">Not read</label><br />
       </div>
       <button type="submit" id="submitBtn">Save</button>
@@ -50,29 +52,29 @@
       <img src="shelf.png" alt="shelf" />
 
       <div id="books">
-        <span >
-          <div class="book"><div class="white-part"> </div>
+        <span>
+          <!-- <div class="book">
+          <div class="white-part"> </div> -->
         </span>
       </div>
-      
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Book title</h2>
-          </div>
-          <div class="modal-body">
-            <p>Author</p>
-            <p>Pages</p>
-            <p>Year</p>
-          </div>
-          <div class="modal-footer">
-            <h3>Read</h3>
-          </div>
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <span id="close">&times;</span>
+          <h2 id="title">Book title</h2>
+        </div>
+        <div class="modal-body">
+          <p id="modal-author">Author</p>
+          <p id="modal-pages">Pages</p>
+          <p id="modal-year">Year</p>
+        </div>
+        <div class="modal-footer">
+          <h3 id="modal-read">Read</h3>
+          <button id="deleteBtn">Delete</button>
         </div>
       </div>
-    
-     
-      
+    </div>
+
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
