@@ -1,5 +1,5 @@
 let myLibrary = [];
-let currentElementId = 0;
+let selectedBookID = 0;
 
 class theBook {
   constructor(name, author, pages, year, read) {
@@ -21,6 +21,7 @@ const modalContent = document.querySelector(".modal-content");
 const close = document.querySelector("#close");
 const closeForm = document.querySelector("#close-form");
 const bookContainer = document.querySelector("#books");
+// const secondShelfPart = document.querySelector("#secondShelfPart");
 const header = document.querySelector("header");
 
 const title = document.querySelector("#title");
@@ -38,9 +39,16 @@ addBookBtn.addEventListener("click", () => {
 });
 
 function assignID() {
+  // querySelectorAll returns something like an Array
+  // which contains all the elements with the class book
   const allBooks = document.querySelectorAll(".book");
+  const secondShelfBooks = document.querySelectorAll(".secondShelf");
+  console.log(allBooks);
 
   allBooks.forEach((book, index) => {
+    book.setAttribute("id", index);
+  });
+  secondShelfBooks.forEach((book, index) => {
     book.setAttribute("id", index);
   });
 }
@@ -67,15 +75,42 @@ function addBookToLibrary() {
 }
 
 function visualiseBook() {
+  const secondShelfPart = document.createElement("div");
+  secondShelfPart.id("#secondShelfPart");
+
   const bookDiv = document.createElement("div");
-  bookDiv.classList.add("book");
-  bookContainer.appendChild(bookDiv);
+  // bookDiv.classList.add("book");
+  // bookContainer.appendChild(bookDiv);
 
   const whitePart = document.createElement("div");
-  whitePart.classList.add("white-part");
-  bookDiv.appendChild(whitePart);
+  // whitePart.classList.add("white-part");
+  // bookDiv.appendChild(whitePart);
+
+  // const secondShelfPart = document.createElement("div");
+  // secondShelfPart.classList.add("secondShelfPart");
 
   assignID();
+  const allBooks = document.querySelectorAll(".book");
+
+  if (allBooks.length <= 8) {
+    bookDiv.classList.add("book");
+    bookContainer.appendChild(bookDiv);
+
+    whitePart.classList.add("white-part");
+    bookDiv.appendChild(whitePart);
+  }
+  if (allBooks.length > 8) {
+    bookDiv.classList.add("secondShelf");
+    secondShelfPart.appendChild(bookDiv);
+    // bookContainer.appendChild(secondShelfPart);
+
+    whitePart.classList.add("white-partSecondShelf");
+    secondShelfBooks.appendChild(whitePart);
+    // bookContainer.appendChild(secondShelfPart);
+    // // bookDiv.appendChild(whitePart);
+  } else {
+    return;
+  }
 }
 
 const submitBtn = document.querySelector("#submitBtn");
@@ -98,27 +133,20 @@ function displayBookData(selectedBookID) {
   Year.textContent = myLibrary[selectedBookID].year;
   modalRead.textContent = myLibrary[selectedBookID].read;
 }
-function updateBookData() {
-  const bookDivs = document.querySelectorAll(".books");
-  for (let i = 0; i < myLibrary.length; i++) {
-    bookDivs[i].setAttribute("data-book", i);
-    console.log(bookDivs[i]);
-  }
-}
+
 deleteBtn.addEventListener("click", () => {
-  myLibrary.splice(bookNumber, 1);
-  const removedBook = document.querySelector(`[data-book="${bookNumber}"]`);
-  console.log(removedBook);
-  document.querySelector(".books").removeChild(removeBook);
+  myLibrary.splice(selectedBookID, 1);
+  document.querySelectorAll(".book")[selectedBookID].remove();
+  assignID();
   modalContent.style.display = "none";
 });
 
 bookContainer.addEventListener("click", (event) => {
   console.log(event);
   console.log(event.target);
-  bookNumber = event.target.attributes[1].value;
 
-  const selectedBookID = event.target.id;
+  selectedBookID = event.target.id;
+
   if (modalContent.style.display === "none") {
     modalContent.style.display = "block";
     console.log(myLibrary[selectedBookID]);

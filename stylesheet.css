@@ -18,6 +18,9 @@ body {
   font-family: "Oswald", sans-serif;
 }
 .book {
+  display: inline-block;
+  /* margin: 10px 0 0 2%; */
+  flex-grow: 1;
   background-color: rgb(124, 111, 81);
   border: 2px solid rgb(87, 81, 52);
   padding: 4vh;
@@ -27,6 +30,12 @@ body {
   -webkit-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
   -moz-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
   box-shadow: 5px -41px 37px -6px rgba(158, 157, 156, 0.993);
+}
+.book:hover {
+  border: 4px solid rgb(87, 81, 52);
+  /* padding: 5vh; */
+  transition-duration: 0.3s;
+  cursor: pointer;
 }
 .white-part {
   background-color: rgb(216, 216, 203);
@@ -39,7 +48,45 @@ body {
   width: 8.4vh;
   position: absolute;
   margin-top: -4.4vh;
-  margin-left: -4.3vh;
+  margin-left: -4.4vh;
+}
+.secondShelf {
+  background-color: rgb(124, 111, 81);
+  border: 2px solid rgb(87, 81, 52);
+  padding: 4vh;
+  height: 14vh;
+  border-radius: 0px 0px 10px 5px;
+  -webkit-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
+  -moz-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
+  box-shadow: 5px -41px 37px -6px rgba(158, 157, 156, 0.993);
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  /* margin-top: 31vh; */
+}
+.secondShelf:hover {
+  border: 4px solid rgb(87, 81, 52);
+  /* padding: 5vh; */
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+.white-partSecondShelf {
+  background-color: rgb(216, 216, 203);
+  border-top: 0px;
+  border-right: 2px solid rgb(87, 81, 52);
+  border-left: 2px solid rgb(87, 81, 52);
+  border-bottom: 2px solid rgb(87, 81, 52);
+  border-radius: 0px 0px 45px 45px;
+  height: 10%;
+  position: absolute;
+  width: 8vh;
+  margin-top: -4.4vh;
+  margin-left: -4.4vh;
+}
+#secondShelfPart {
+  display: flex;
+  position: absolute;
+  margin-top: 31vh;
 }
 #books {
   display: flex;
@@ -96,17 +143,7 @@ button:active {
   -moz-box-shadow: 0px -16px 90px -18px rgb(194, 191, 188);
   box-shadow: 0px -16px 90px -18px rgb(194, 191, 188);
 }
-.newBook {
-  background-color: rgb(124, 111, 81);
-  border: 2px solid rgb(87, 81, 52);
-  padding: 4vh;
-  height: 14vh;
-  width: 2%;
-  border-radius: 0px 0px 10px 5px;
-  -webkit-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
-  -moz-box-shadow: 5px -41px 37px -6px rgba(74, 64, 47, 0.65);
-  box-shadow: 5px -41px 37px -6px rgba(158, 157, 156, 0.993);
-}
+
 .modal-header {
   padding: 2px 16px;
   background-color: rgb(183, 78, 27);
@@ -133,7 +170,7 @@ button:active {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 10%;
+  width: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
