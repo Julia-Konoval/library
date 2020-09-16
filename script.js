@@ -21,7 +21,7 @@ const modalContent = document.querySelector(".modal-content");
 const close = document.querySelector("#close");
 const closeForm = document.querySelector("#close-form");
 const bookContainer = document.querySelector("#books");
-// const secondShelfPart = document.querySelector("#secondShelfPart");
+const secondShelf = document.querySelector("#second-shelf");
 const header = document.querySelector("header");
 
 const title = document.querySelector("#title");
@@ -42,15 +42,15 @@ function assignID() {
   // querySelectorAll returns something like an Array
   // which contains all the elements with the class book
   const allBooks = document.querySelectorAll(".book");
-  const secondShelfBooks = document.querySelectorAll(".secondShelf");
+  // const secondShelfBooks = document.querySelectorAll('.secondShelfBooks');
   console.log(allBooks);
 
   allBooks.forEach((book, index) => {
     book.setAttribute("id", index);
   });
-  secondShelfBooks.forEach((book, index) => {
-    book.setAttribute("id", index);
-  });
+  // secondShelfBooks.forEach((book, index) => {
+  //   book.setAttribute('id', index);
+  // });
 }
 
 function addBookToLibrary() {
@@ -76,7 +76,7 @@ function addBookToLibrary() {
 
 function visualiseBook() {
   const secondShelfPart = document.createElement("div");
-  secondShelfPart.id("#secondShelfPart");
+  // secondShelfPart.id("#secondShelfPart");
 
   const bookDiv = document.createElement("div");
   // bookDiv.classList.add("book");
@@ -92,20 +92,20 @@ function visualiseBook() {
   assignID();
   const allBooks = document.querySelectorAll(".book");
 
-  if (allBooks.length <= 8) {
+  if (allBooks.length < 9) {
     bookDiv.classList.add("book");
     bookContainer.appendChild(bookDiv);
 
     whitePart.classList.add("white-part");
     bookDiv.appendChild(whitePart);
   }
-  if (allBooks.length > 8) {
-    bookDiv.classList.add("secondShelf");
-    secondShelfPart.appendChild(bookDiv);
+  if (allBooks.length > 8 && allBooks.length < 19) {
+    bookDiv.classList.add("book");
+    secondShelf.appendChild(bookDiv);
     // bookContainer.appendChild(secondShelfPart);
 
     whitePart.classList.add("white-partSecondShelf");
-    secondShelfBooks.appendChild(whitePart);
+    bookDiv.appendChild(whitePart);
     // bookContainer.appendChild(secondShelfPart);
     // // bookDiv.appendChild(whitePart);
   } else {
