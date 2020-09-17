@@ -20,7 +20,7 @@ const modal = document.getElementById("myModal");
 const modalContent = document.querySelector(".modal-content");
 const close = document.querySelector("#close");
 const closeForm = document.querySelector("#close-form");
-const bookContainer = document.querySelector("#books");
+const firstShelf = document.querySelector("#first-shelf");
 const secondShelf = document.querySelector("#second-shelf");
 const header = document.querySelector("header");
 
@@ -80,9 +80,11 @@ function visualiseBook() {
 
   const bookDiv = document.createElement("div");
   // bookDiv.classList.add("book");
-  // bookContainer.appendChild(bookDiv);
+  // firstShelf.appendChild(bookDiv);
 
   const whitePart = document.createElement("div");
+  let inscription = document.createTextNode("Book");
+  whitePart.appendChild(inscription);
   // whitePart.classList.add("white-part");
   // bookDiv.appendChild(whitePart);
 
@@ -92,23 +94,24 @@ function visualiseBook() {
   assignID();
   const allBooks = document.querySelectorAll(".book");
 
-  if (allBooks.length < 9) {
+  if (allBooks.length < 10) {
     bookDiv.classList.add("book");
-    bookContainer.appendChild(bookDiv);
+    firstShelf.appendChild(bookDiv);
 
     whitePart.classList.add("white-part");
     bookDiv.appendChild(whitePart);
   }
-  if (allBooks.length > 8 && allBooks.length < 19) {
+  if (allBooks.length > 10) {
     bookDiv.classList.add("book");
     secondShelf.appendChild(bookDiv);
-    // bookContainer.appendChild(secondShelfPart);
+    // firstShelf.appendChild(secondShelfPart);
 
     whitePart.classList.add("white-partSecondShelf");
     bookDiv.appendChild(whitePart);
-    // bookContainer.appendChild(secondShelfPart);
+    // firstShelf.appendChild(secondShelfPart);
     // // bookDiv.appendChild(whitePart);
-  } else {
+  }
+  if (allBooks.length > 20) {
     return;
   }
 }
@@ -141,7 +144,21 @@ deleteBtn.addEventListener("click", () => {
   modalContent.style.display = "none";
 });
 
-bookContainer.addEventListener("click", (event) => {
+firstShelf.addEventListener("click", (event) => {
+  console.log(event);
+  console.log(event.target);
+
+  selectedBookID = event.target.id;
+
+  if (modalContent.style.display === "none") {
+    modalContent.style.display = "block";
+    console.log(myLibrary[selectedBookID]);
+    displayBookData(selectedBookID);
+  } else {
+    modalContent.style.display = "none";
+  }
+});
+secondShelf.addEventListener("click", (event) => {
   console.log(event);
   console.log(event.target);
 
