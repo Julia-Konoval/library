@@ -94,24 +94,22 @@ function visualiseBook() {
   assignID();
   const allBooks = document.querySelectorAll(".book");
 
-  if (allBooks.length < 10) {
+  if (allBooks.length <= 9) {
     bookDiv.classList.add("book");
     firstShelf.appendChild(bookDiv);
 
     whitePart.classList.add("white-part");
     bookDiv.appendChild(whitePart);
-  }
-  if (allBooks.length > 10) {
-    bookDiv.classList.add("book");
-    secondShelf.appendChild(bookDiv);
+  } else if (allBooks.length > 9) {
+    secondShelfPart.classList.add("book");
+    secondShelf.appendChild(secondShelfPart);
     // firstShelf.appendChild(secondShelfPart);
 
     whitePart.classList.add("white-partSecondShelf");
-    bookDiv.appendChild(whitePart);
+    secondShelfPart.appendChild(whitePart);
     // firstShelf.appendChild(secondShelfPart);
     // // bookDiv.appendChild(whitePart);
-  }
-  if (allBooks.length > 20) {
+  } else if (allBooks.length === 20) {
     return;
   }
 }

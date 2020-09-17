@@ -133,7 +133,6 @@ header button {
 }
 #close,
 #close-form {
-  float: right;
   font-size: 60px;
 }
 input {
