@@ -75,42 +75,40 @@ function addBookToLibrary() {
 }
 
 function visualiseBook() {
-  const secondShelfPart = document.createElement("div");
-  // secondShelfPart.id("#secondShelfPart");
-
   const bookDiv = document.createElement("div");
-  // bookDiv.classList.add("book");
-  // firstShelf.appendChild(bookDiv);
+  bookDiv.classList.add("book");
 
   const whitePart = document.createElement("div");
   let inscription = document.createTextNode("Book");
   whitePart.appendChild(inscription);
-  // whitePart.classList.add("white-part");
-  // bookDiv.appendChild(whitePart);
 
-  // const secondShelfPart = document.createElement("div");
-  // secondShelfPart.classList.add("secondShelfPart");
-
-  assignID();
   const allBooks = document.querySelectorAll(".book");
 
-  if (allBooks.length <= 9) {
-    bookDiv.classList.add("book");
-    firstShelf.appendChild(bookDiv);
-
+  if (allBooks.length < 10) {
     whitePart.classList.add("white-part");
     bookDiv.appendChild(whitePart);
-  } else if (allBooks.length > 9) {
-    secondShelfPart.classList.add("book");
-    secondShelf.appendChild(secondShelfPart);
-    // firstShelf.appendChild(secondShelfPart);
-
+    firstShelf.appendChild(bookDiv);
+    assignID();
+  }
+  if (allBooks.length >= 10 && allBooks.length < 20) {
     whitePart.classList.add("white-partSecondShelf");
-    secondShelfPart.appendChild(whitePart);
-    // firstShelf.appendChild(secondShelfPart);
-    // // bookDiv.appendChild(whitePart);
-  } else if (allBooks.length === 20) {
-    return;
+    bookDiv.appendChild(whitePart);
+    secondShelf.appendChild(bookDiv);
+    assignID();
+  }
+  if (firstShelf.childElementCount < 10) {
+    whitePart.classList.add("white-part");
+    bookDiv.appendChild(whitePart);
+    firstShelf.appendChild(bookDiv);
+    assignID();
+  } else if (
+    secondShelf.childElementCount < 10 &&
+    secondShelf.childElementCount < 20
+  ) {
+    whitePart.classList.add("white-partSecondShelf");
+    bookDiv.appendChild(whitePart);
+    secondShelf.appendChild(bookDiv);
+    assignID();
   }
 }
 
