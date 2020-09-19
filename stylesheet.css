@@ -230,6 +230,11 @@ button:active {
   #second-shelf {
     margin: 30px 0 0 85px;
   }
+  #form {
+    height: 450px;
+    font-size: 14px;
+    padding-top: 0;
+  }
 }
 
 @media (min-width: 375px) and (max-width: 450px) {
@@ -265,7 +270,7 @@ button:active {
     background-size: 440px;
   }
   #form {
-    height: 450px;
+    height: 350px;
     font-size: 14px;
     padding-top: 0;
   }
